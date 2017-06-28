@@ -31,8 +31,10 @@ AJPlayer::AJPlayer()
 
 	CharacterMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Character"));
 	static ConstructorHelpers::FObjectFinder<UStaticMesh> Character(TEXT("/Game/StarterContent/Shapes/Shape_Sphere"));
+	/*
 	if (Character.Succeeded())
 		CharacterMesh->SetStaticMesh(Character.Object);
+	*/
 
 }
 
@@ -128,7 +130,7 @@ void AJPlayer::Tick(float dTime)
 		GetWorld()->OriginLocation.Y,
 		GetWorld()->OriginLocation.Z
 	);
-	DrawDebugLine(GetWorld(),GetActorLocation(), origin + WarpPoint, FColor::Green, false, -1, 0, 1.f);
+	DrawDebugLine(GetWorld(),GetActorLocation(), origin + warpVector, FColor::Green, false, -1, 0, 1.f);
 }
 
 void AJPlayer::OnHit(class AActor* otherActor, class UPrimitiveComponent* otherComp, FVector normalImpulse, const FHitResult &hit) 

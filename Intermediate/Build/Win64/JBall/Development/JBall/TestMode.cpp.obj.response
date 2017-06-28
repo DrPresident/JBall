@@ -22,7 +22,6 @@
 /w44668
 /I Z:\UE_4.16\Engine\Source
 /I F:\JBall\Source
-/I F:\JBall\Intermediate\Build\Win64\UE4\Inc\JBall
 /I F:\JBall\Source\JBall
 /I Z:\UE_4.16\Engine\Source\Runtime\Core\Public
 /I Z:\UE_4.16\Engine\Source\Runtime\Core\Public\Internationalization
