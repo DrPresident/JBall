@@ -2,6 +2,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/GameMode.h"
+#include "JPlayer.h"
 #include "TestMode.generated.h"
 
 /** TestMode
@@ -16,4 +17,6 @@ class JBALL_API ATestMode : public AGameMode
 	ATestMode(const FObjectInitializer &init);
 
 	virtual void StartPlay() override;
+public:
+	AJPlayer* Player;
 };

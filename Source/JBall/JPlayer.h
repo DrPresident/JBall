@@ -36,6 +36,8 @@ public:
 	UFUNCTION()
 	void OnStopJump();
 	UFUNCTION()
+	void OnHit(class AActor* otherActor, class UPrimitiveComponent* otherComp, FVector normalImpulse, const FHitResult &hit);
+	UFUNCTION()
 	void DoubleJump();
 	UFUNCTION()
 	void Warp();
@@ -57,6 +59,7 @@ public:
 	
 	UParticleSystemComponent *WarpHandEffect;
 	UStaticMeshComponent *WarpMarker;
+	UStaticMeshComponent *CharacterMesh;
 	
 protected:
 	virtual void BeginPlay() override;

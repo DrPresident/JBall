@@ -2,6 +2,40 @@
 #include "Engine.h"
 #include "GameFramework/Pawn.h"
 
+AJPlayer::AJPlayer() 
+{
+	PrimaryActorTick.bCanEverTick = true;
+	jumped = false;
+	warped = false;
+	doubleJumped = false;
+	JumpMaxCount = 2;
+	WarpDistance = 1000;
+	WarpSpeed = 10;
+	warpTraceParams = FCollisionQueryParams(FName(TEXT("Warp Trace")), true, this);
+	warpTraceParams.bTraceComplex = true;
+	warpTraceParams.bTraceAsyncScene = true;
+	warpTraceParams.bReturnPhysicalMaterial = false;
+	w = WarpSpeed;
+	//MovementComponent = Cast<UJMovementComponent>(GetCharacterMovement());
+	MovementComponent = GetCharacterMovement();
+	MovementComponent->AirControl = 0.5;
+
+	cameraPitch = 0.f;
+
+	//Warp Marker Setup
+	WarpMarker = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Warp Marker"));
+	WarpMarker->bAutoActivate = true;
+	static ConstructorHelpers::FObjectFinder<UStaticMesh> Sphere(TEXT("/Game/StarterContent/Shapes/Shape_Sphere"));
+	if (Sphere.Succeeded()) 
+		WarpMarker->SetStaticMesh(Sphere.Object);
+
+	CharacterMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Character"));
+	static ConstructorHelpers::FObjectFinder<UStaticMesh> Character(TEXT("/Game/StarterContent/Shapes/Shape_Sphere"));
+	if (Character.Succeeded())
+		CharacterMesh->SetStaticMesh(Character.Object);
+
+}
+
 AJPlayer::AJPlayer(const FObjectInitializer &init)
 	//: Super(init.SetDefaultSubobjectClass<UJMovementComponent>(ACharacter::CharacterMovementComponentName))
 {
@@ -29,13 +63,18 @@ AJPlayer::AJPlayer(const FObjectInitializer &init)
 	static ConstructorHelpers::FObjectFinder<UStaticMesh> Sphere(TEXT("/Game/StarterContent/Shapes/Shape_Sphere"));
 	if (Sphere.Succeeded()) 
 		WarpMarker->SetStaticMesh(Sphere.Object);
+
+	CharacterMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Character"));
+	static ConstructorHelpers::FObjectFinder<UStaticMesh> Character(TEXT("/Game/StarterContent/Shapes/Shape_Sphere"));
+	if (Character.Succeeded())
+		CharacterMesh->SetStaticMesh(Character.Object);
 }
 
 void AJPlayer::BeginPlay()
 {
 	Super::BeginPlay();
 	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("JBALL!!"));
-	//RootComponent = MeshComponent;
+	RootComponent = CharacterMesh;
 }
 
 void AJPlayer::Tick(float dTime)
@@ -83,7 +122,18 @@ void AJPlayer::Tick(float dTime)
 		WarpPoint = GetActorLocation() + warpVector;
 
 
-	DrawDebugLine(GetWorld(),GetActorLocation(), WarpPoint, FColor::Green, false, -1, 0, 1.f);
+	FVector origin
+	(
+		GetWorld()->OriginLocation.X,
+		GetWorld()->OriginLocation.Y,
+		GetWorld()->OriginLocation.Z
+	);
+	DrawDebugLine(GetWorld(),GetActorLocation(), origin + WarpPoint, FColor::Green, false, -1, 0, 1.f);
+}
+
+void AJPlayer::OnHit(class AActor* otherActor, class UPrimitiveComponent* otherComp, FVector normalImpulse, const FHitResult &hit) 
+{
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("Hit!!"));
 }
 
 void AJPlayer::SetupPlayerInputComponent(UInputComponent* comp)
