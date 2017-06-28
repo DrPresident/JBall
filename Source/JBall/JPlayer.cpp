@@ -46,8 +46,8 @@ AJPlayer::AJPlayer(const FObjectInitializer &init)
 	JumpMaxCount = 2;
 	WarpDistance = 1000;
 	WarpSpeed = 10;
-	warpTraceParams = FCollisionQueryParams(FName(TEXT("Warp Trace")), true, this);
-	warpTraceParams.bTraceComplex = true;
+	warpTraceParams = FCollisionQueryParams(FName("Warp Trace"), true, this);
+	//warpTraceParams.bTraceComplex = true;
 	warpTraceParams.bTraceAsyncScene = true;
 	warpTraceParams.bReturnPhysicalMaterial = false;
 	w = WarpSpeed;
@@ -84,17 +84,14 @@ void AJPlayer::Tick(float dTime)
 	warpVector = GetControlRotation().Vector() * WarpDistance;//FRotator(GetControlRotation().Pitch,0,0).RotateVector(GetActorForwardVector()) * WarpDistance;
 
 	FHitResult warpHit;
-	ActorLineTraceSingle(warpHit, GetActorLocation(), GetActorLocation() + warpVector, ECC_PhysicsBody, warpTraceParams);
+	ActorLineTraceSingle(warpHit, GetActorLocation(), GetActorLocation() + warpVector, ECC_MAX, warpTraceParams);
 
 	//update warpVector for blocking objects
-	if (warpHit.bBlockingHit)
+	if (warpHit.Location != FVector(0,0,0))
 	{
-		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("Blocking Hit"));
-		warpVector = GetActorLocation() - warpHit.Location;
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, warpHit.Location.ToString());
+		warpVector = warpHit.Location - GetActorLocation();
 	}
-
-	//position Warp Marker
-	WarpMarker->SetRelativeLocation(WarpPoint);
 
 	//Warp logic
 	if (warping) 
@@ -121,14 +118,9 @@ void AJPlayer::Tick(float dTime)
 	else 
 		WarpPoint = GetActorLocation() + warpVector;
 
-
-	FVector origin
-	(
-		GetWorld()->OriginLocation.X,
-		GetWorld()->OriginLocation.Y,
-		GetWorld()->OriginLocation.Z
-	);
-	DrawDebugLine(GetWorld(),GetActorLocation(), GetActorLocation() + warpVector, FColor::Green, false, -1, 0, 1.f);
+	//position Warp Marker
+	WarpMarker->SetRelativeLocation(WarpPoint);
+	DrawDebugLine(GetWorld(),GetActorLocation(), WarpPoint, FColor::Red, false, -1, 0, 1.f);
 }
 
 void AJPlayer::OnHit(class AActor* otherActor, class UPrimitiveComponent* otherComp, FVector normalImpulse, const FHitResult &hit) 

@@ -1,61 +1,70 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
+
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <ItemGroup>
-    <None Include="..\..\JBall.uproject" />
-    <Filter Include="Source">
-      <UniqueIdentifier>{9850ADCF-B388-4E93-8BCB-8A1CABA2A30E}</UniqueIdentifier>
-    </Filter>
-    <None Include="..\..\Source\JBall.Target.cs">
-      <Filter>Source</Filter>
-    </None>
-    <None Include="..\..\Source\JBallEditor.Target.cs">
-      <Filter>Source</Filter>
-    </None>
-    <Filter Include="Config">
-      <UniqueIdentifier>{417CAA25-1A27-4F98-9D38-E606EA190EDF}</UniqueIdentifier>
-    </Filter>
-    <None Include="..\..\Config\DefaultEditor.ini">
-      <Filter>Config</Filter>
-    </None>
-    <None Include="..\..\Config\DefaultEngine.ini">
-      <Filter>Config</Filter>
-    </None>
-    <None Include="..\..\Config\DefaultGame.ini">
-      <Filter>Config</Filter>
-    </None>
-    <Filter Include="Source\JBall">
-      <UniqueIdentifier>{5B916191-E4F9-4FB8-B6E4-1F543426C482}</UniqueIdentifier>
-    </Filter>
-    <None Include="..\..\Source\JBall\JBall.Build.cs">
-      <Filter>Source\JBall</Filter>
-    </None>
-    <ClCompile Include="..\..\Source\JBall\JBall.cpp">
-      <Filter>Source\JBall</Filter>
-    </ClCompile>
-    <ClInclude Include="..\..\Source\JBall\JBall.h">
-      <Filter>Source\JBall</Filter>
-    </ClInclude>
-    <ClCompile Include="..\..\Source\JBall\JPlayer.cpp">
-      <Filter>Source\JBall</Filter>
-    </ClCompile>
-    <ClInclude Include="..\..\Source\JBall\JPlayer.h">
-      <Filter>Source\JBall</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\Source\JBall\TestMode.h">
-      <Filter>Source\JBall</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\JBall\JMovementComponent.h">
-      <Filter>Source\JBall</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\Source\JBall\TestMode.cpp">
-      <Filter>Source\JBall</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\JBall\JMovementComponent.cpp">
-      <Filter>Source\JBall</Filter>
-    </ClCompile>
-  </ItemGroup>
+	<ItemGroup>
+		<None Include="..\..\JBall.uproject" />
+		<Filter Include="Source">
+			<UniqueIdentifier>{CB952F0A-ACDB-4DA2-B606-85B685C76D9C}</UniqueIdentifier>
+		</Filter>
+		<None Include="..\..\Source\JBall.Target.cs">
+			<Filter>Source</Filter>
+		</None >
+		<None Include="..\..\Source\JBallEditor.Target.cs">
+			<Filter>Source</Filter>
+		</None >
+		<Filter Include="Config">
+			<UniqueIdentifier>{3CE7EC80-67D2-4935-92C8-F1CC6F15D3BC}</UniqueIdentifier>
+		</Filter>
+		<None Include="..\..\Config\DefaultEditor.ini">
+			<Filter>Config</Filter>
+		</None >
+		<None Include="..\..\Config\DefaultEditorPerProjectUserSettings.ini">
+			<Filter>Config</Filter>
+		</None >
+		<None Include="..\..\Config\DefaultEngine.ini">
+			<Filter>Config</Filter>
+		</None >
+		<None Include="..\..\Config\DefaultGame.ini">
+			<Filter>Config</Filter>
+		</None >
+		<None Include="..\..\Config\DefaultInput.ini">
+			<Filter>Config</Filter>
+		</None >
+		<Filter Include="Source\JBall">
+			<UniqueIdentifier>{5CD3F65A-A0C1-48B3-99BA-330845363D46}</UniqueIdentifier>
+		</Filter>
+		<None Include="..\..\Source\JBall\JBall.Build.cs">
+			<Filter>Source\JBall</Filter>
+		</None >
+		<ClCompile Include="..\..\Source\JBall\JBall.cpp">
+			<Filter>Source\JBall</Filter>
+		</ClCompile >
+		<ClInclude Include="..\..\Source\JBall\JBall.h">
+			<Filter>Source\JBall</Filter>
+		</ClInclude >
+		<ClCompile Include="..\..\Source\JBall\JBallGameModeBase.cpp">
+			<Filter>Source\JBall</Filter>
+		</ClCompile >
+		<ClInclude Include="..\..\Source\JBall\JBallGameModeBase.h">
+			<Filter>Source\JBall</Filter>
+		</ClInclude >
+		<ClCompile Include="..\..\Source\JBall\JMovementComponent.cpp">
+			<Filter>Source\JBall</Filter>
+		</ClCompile >
+		<ClInclude Include="..\..\Source\JBall\JMovementComponent.h">
+			<Filter>Source\JBall</Filter>
+		</ClInclude >
+		<ClCompile Include="..\..\Source\JBall\JPlayer.cpp">
+			<Filter>Source\JBall</Filter>
+		</ClCompile >
+		<ClInclude Include="..\..\Source\JBall\JPlayer.h">
+			<Filter>Source\JBall</Filter>
+		</ClInclude >
+		<ClCompile Include="..\..\Source\JBall\TestMode.cpp">
+			<Filter>Source\JBall</Filter>
+		</ClCompile >
+		<ClInclude Include="..\..\Source\JBall\TestMode.h">
+			<Filter>Source\JBall</Filter>
+		</ClInclude >
+	</ItemGroup>
 </Project>
