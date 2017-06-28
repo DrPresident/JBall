@@ -31,10 +31,8 @@ AJPlayer::AJPlayer()
 
 	CharacterMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Character"));
 	static ConstructorHelpers::FObjectFinder<UStaticMesh> Character(TEXT("/Game/StarterContent/Shapes/Shape_Sphere"));
-	/*
 	if (Character.Succeeded())
 		CharacterMesh->SetStaticMesh(Character.Object);
-	*/
 
 }
 
@@ -76,14 +74,14 @@ void AJPlayer::BeginPlay()
 {
 	Super::BeginPlay();
 	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("JBALL!!"));
-	RootComponent = CharacterMesh;
+	//RootComponent = CharacterMesh;
 }
 
 void AJPlayer::Tick(float dTime)
 {
 	Super::Tick(dTime);
 
-	warpVector = FRotator(GetControlRotation().Pitch,0,0).RotateVector(GetActorForwardVector()) * WarpDistance;
+	warpVector = GetControlRotation().Vector() * WarpDistance;//FRotator(GetControlRotation().Pitch,0,0).RotateVector(GetActorForwardVector()) * WarpDistance;
 
 	FHitResult warpHit;
 	ActorLineTraceSingle(warpHit, GetActorLocation(), GetActorLocation() + warpVector, ECC_PhysicsBody, warpTraceParams);
@@ -108,7 +106,7 @@ void AJPlayer::Tick(float dTime)
 			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("Start Warp"));
 		}
 
-		//Lock motion when warping
+		//Lock velocity when warping
 		MovementComponent->Velocity *= FVector(0, 0, 0);
 		//perform partial warp
 		SetActorLocation(GetActorLocation() + (warpVector / WarpSpeed));
@@ -130,7 +128,7 @@ void AJPlayer::Tick(float dTime)
 		GetWorld()->OriginLocation.Y,
 		GetWorld()->OriginLocation.Z
 	);
-	DrawDebugLine(GetWorld(),GetActorLocation(), origin + warpVector, FColor::Green, false, -1, 0, 1.f);
+	DrawDebugLine(GetWorld(),GetActorLocation(), GetActorLocation() + warpVector, FColor::Green, false, -1, 0, 1.f);
 }
 
 void AJPlayer::OnHit(class AActor* otherActor, class UPrimitiveComponent* otherComp, FVector normalImpulse, const FHitResult &hit) 
