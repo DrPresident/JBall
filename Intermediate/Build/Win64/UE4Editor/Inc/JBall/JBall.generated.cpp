@@ -22,6 +22,8 @@ void EmptyLinkFunctionForGeneratedCode1JBall() {}
 	ENGINE_API class UClass* Z_Construct_UClass_UPrimitiveComponent_NoRegister();
 	ENGINE_API class UClass* Z_Construct_UClass_AActor_NoRegister();
 	ENGINE_API class UClass* Z_Construct_UClass_ACharacter();
+	ENGINE_API class UClass* Z_Construct_UClass_USkeletalMeshComponent_NoRegister();
+	ENGINE_API class UClass* Z_Construct_UClass_UParticleSystemComponent_NoRegister();
 	ENGINE_API class UClass* Z_Construct_UClass_AGameMode();
 
 	JBALL_API class UClass* Z_Construct_UClass_AJBallGameModeBase_NoRegister();
@@ -379,6 +381,10 @@ void EmptyLinkFunctionForGeneratedCode1JBall() {}
 				OuterClass->LinkChild(Z_Construct_UFunction_AJPlayer_Warp());
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
+				UProperty* NewProp_CharacterMesh = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("CharacterMesh"), RF_Public|RF_Transient|RF_MarkAsNative) UObjectProperty(CPP_PROPERTY_BASE(CharacterMesh, AJPlayer), 0x0010000000080009, Z_Construct_UClass_USkeletalMeshComponent_NoRegister());
+				UProperty* NewProp_WarpMarker = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("WarpMarker"), RF_Public|RF_Transient|RF_MarkAsNative) UObjectProperty(CPP_PROPERTY_BASE(WarpMarker, AJPlayer), 0x0010000000080009, Z_Construct_UClass_UParticleSystemComponent_NoRegister());
+				UProperty* NewProp_WarpHandEffect = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("WarpHandEffect"), RF_Public|RF_Transient|RF_MarkAsNative) UObjectProperty(CPP_PROPERTY_BASE(WarpHandEffect, AJPlayer), 0x0010000000080009, Z_Construct_UClass_UParticleSystemComponent_NoRegister());
+				UProperty* NewProp_WarpPoint = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("WarpPoint"), RF_Public|RF_Transient|RF_MarkAsNative) UStructProperty(CPP_PROPERTY_BASE(WarpPoint, AJPlayer), 0x0010000000000001, Z_Construct_UScriptStruct_FVector());
 				UProperty* NewProp_WarpSpeed = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("WarpSpeed"), RF_Public|RF_Transient|RF_MarkAsNative) UUnsizedIntProperty(CPP_PROPERTY_BASE(WarpSpeed, AJPlayer), 0x0010000000000001);
 				UProperty* NewProp_WarpDistance = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("WarpDistance"), RF_Public|RF_Transient|RF_MarkAsNative) UFloatProperty(CPP_PROPERTY_BASE(WarpDistance, AJPlayer), 0x0010000000000001);
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
@@ -401,7 +407,17 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 				MetaData->SetValue(OuterClass, TEXT("HideCategories"), TEXT("Navigation"));
 				MetaData->SetValue(OuterClass, TEXT("IncludePath"), TEXT("JPlayer.h"));
 				MetaData->SetValue(OuterClass, TEXT("ModuleRelativePath"), TEXT("JPlayer.h"));
-				MetaData->SetValue(OuterClass, TEXT("ObjectInitializerConstructorDeclared"), TEXT(""));
+				MetaData->SetValue(NewProp_CharacterMesh, TEXT("Category"), TEXT("JPlayer"));
+				MetaData->SetValue(NewProp_CharacterMesh, TEXT("EditInline"), TEXT("true"));
+				MetaData->SetValue(NewProp_CharacterMesh, TEXT("ModuleRelativePath"), TEXT("JPlayer.h"));
+				MetaData->SetValue(NewProp_WarpMarker, TEXT("Category"), TEXT("JPlayer"));
+				MetaData->SetValue(NewProp_WarpMarker, TEXT("EditInline"), TEXT("true"));
+				MetaData->SetValue(NewProp_WarpMarker, TEXT("ModuleRelativePath"), TEXT("JPlayer.h"));
+				MetaData->SetValue(NewProp_WarpHandEffect, TEXT("Category"), TEXT("JPlayer"));
+				MetaData->SetValue(NewProp_WarpHandEffect, TEXT("EditInline"), TEXT("true"));
+				MetaData->SetValue(NewProp_WarpHandEffect, TEXT("ModuleRelativePath"), TEXT("JPlayer.h"));
+				MetaData->SetValue(NewProp_WarpPoint, TEXT("Category"), TEXT("JPlayer"));
+				MetaData->SetValue(NewProp_WarpPoint, TEXT("ModuleRelativePath"), TEXT("JPlayer.h"));
 				MetaData->SetValue(NewProp_WarpSpeed, TEXT("Category"), TEXT("JPlayer"));
 				MetaData->SetValue(NewProp_WarpSpeed, TEXT("ModuleRelativePath"), TEXT("JPlayer.h"));
 				MetaData->SetValue(NewProp_WarpDistance, TEXT("Category"), TEXT("JPlayer"));
@@ -412,7 +428,7 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 		check(OuterClass->GetClass());
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(AJPlayer, 4254606930);
+	IMPLEMENT_CLASS(AJPlayer, 2944345766);
 	static FCompiledInDefer Z_CompiledInDefer_UClass_AJPlayer(Z_Construct_UClass_AJPlayer, &AJPlayer::StaticClass, TEXT("/Script/JBall"), TEXT("AJPlayer"), false, nullptr, nullptr, nullptr);
 	DEFINE_VTABLE_PTR_HELPER_CTOR(AJPlayer);
 	void ATestMode::StaticRegisterNativesATestMode()
@@ -465,7 +481,7 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 			ReturnPackage = CastChecked<UPackage>(StaticFindObjectFast(UPackage::StaticClass(), nullptr, FName(TEXT("/Script/JBall")), false, false));
 			ReturnPackage->SetPackageFlags(PKG_CompiledIn | 0x00000000);
 			FGuid Guid;
-			Guid.A = 0x1C7FBD30;
+			Guid.A = 0x9D3F28F1;
 			Guid.B = 0xBDFCE3E0;
 			Guid.C = 0x00000000;
 			Guid.D = 0x00000000;

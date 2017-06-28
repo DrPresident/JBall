@@ -17,7 +17,7 @@ class JBALL_API AJPlayer : public ACharacter
 public:
 	AJPlayer();
 
-	AJPlayer(const class FObjectInitializer &init);
+	//AJPlayer(const class FObjectInitializer &init);
 
 	virtual void Tick(float dTime) override;
 
@@ -52,17 +52,21 @@ public:
 	UPROPERTY(EditAnywhere)
 	int WarpSpeed;
 
+	UPROPERTY(EditAnywhere)
 	FVector WarpPoint;
 
 	UCharacterMovementComponent *MovementComponent;
-	UStaticMeshComponent *MeshComponent;
-	
+	UPROPERTY(EditAnywhere)
 	UParticleSystemComponent *WarpHandEffect;
-	UStaticMeshComponent *WarpMarker;
-	UStaticMeshComponent *CharacterMesh;
+	UPROPERTY(EditAnywhere)
+	UParticleSystemComponent *WarpMarker;
+	UPROPERTY(EditAnywhere)
+	USkeletalMeshComponent *CharacterMesh;
 	
 protected:
 	virtual void BeginPlay() override;
+
+	USpringArmComponent *WarpArm;
 
 	bool warped,
 		 warping,
