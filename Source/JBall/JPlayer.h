@@ -36,7 +36,7 @@ public:
 	UFUNCTION()
 	void OnStopJump();
 	UFUNCTION()
-	void OnHit(class AActor* otherActor, class UPrimitiveComponent* otherComp, FVector normalImpulse, const FHitResult &hit);
+	virtual void OnHit(class AActor* otherActor, class UPrimitiveComponent* otherComp, FVector normalImpulse, const FHitResult &hit);
 	UFUNCTION()
 	void DoubleJump();
 	UFUNCTION()
@@ -66,7 +66,6 @@ public:
 	
 protected:
 	virtual void BeginPlay() override;
-
 
 	bool warped,
 		 warping,

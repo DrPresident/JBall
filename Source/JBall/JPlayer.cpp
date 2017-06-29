@@ -35,6 +35,11 @@ AJPlayer::AJPlayer()
 	static ConstructorHelpers::FObjectFinder<USkeletalMesh> Character(TEXT("/Game/AnimStarterPack/UE4_Mannequin/Mesh/SK_Mannequin"));
 	if (Character.Succeeded())
 		CharacterMesh->SetSkeletalMesh(Character.Object);
+
+	TScriptDelegate<FWeakObjectPtr> hitFunction;
+	hitFunction.BindUFunction(this, "OnHit");
+	CharacterMesh->OnComponentBeginOverlap.Add(hitFunction);
+	CharacterMesh->bGenerateOverlapEvents = true;
 }
 
 void AJPlayer::BeginPlay()
@@ -45,6 +50,7 @@ void AJPlayer::BeginPlay()
 	CharacterMesh->SetupAttachment(RootComponent);
 	//WarpArm->SetupAttachment(RootComponent);
 	WarpMarker->SetupAttachment(RootComponent);
+	//SphereCol->SetupAttachment(RootComponent);
 }
 
 void AJPlayer::Tick(float dTime)
@@ -94,7 +100,7 @@ void AJPlayer::Tick(float dTime)
 	//DrawDebugLine(GetWorld(),GetActorLocation(), WarpPoint, FColor::Red, false, -1, 0, 1.f);
 }
 
-void AJPlayer::OnHit(class AActor* otherActor, class UPrimitiveComponent* otherComp, FVector normalImpulse, const FHitResult &hit) 
+void AJPlayer::OnHit(class AActor* otherActor, class UPrimitiveComponent* otherComp, FVector normalImpulse, const FHitResult &hit)
 {
 	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("Hit!!"));
 }

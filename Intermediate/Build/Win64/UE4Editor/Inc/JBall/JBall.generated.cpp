@@ -250,7 +250,7 @@ void EmptyLinkFunctionForGeneratedCode1JBall() {}
 		static UFunction* ReturnFunction = NULL;
 		if (!ReturnFunction)
 		{
-			ReturnFunction = new(EC_InternalUseOnlyConstructor, Outer, TEXT("OnHit"), RF_Public|RF_Transient|RF_MarkAsNative) UFunction(FObjectInitializer(), NULL, 0x00C20401, 65535, sizeof(JPlayer_eventOnHit_Parms));
+			ReturnFunction = new(EC_InternalUseOnlyConstructor, Outer, TEXT("OnHit"), RF_Public|RF_Transient|RF_MarkAsNative) UFunction(FObjectInitializer(), NULL, 0x00C20400, 65535, sizeof(JPlayer_eventOnHit_Parms));
 			UProperty* NewProp_hit = new(EC_InternalUseOnlyConstructor, ReturnFunction, TEXT("hit"), RF_Public|RF_Transient|RF_MarkAsNative) UStructProperty(CPP_PROPERTY_BASE(hit, JPlayer_eventOnHit_Parms), 0x0010008008000182, Z_Construct_UScriptStruct_FHitResult());
 			UProperty* NewProp_normalImpulse = new(EC_InternalUseOnlyConstructor, ReturnFunction, TEXT("normalImpulse"), RF_Public|RF_Transient|RF_MarkAsNative) UStructProperty(CPP_PROPERTY_BASE(normalImpulse, JPlayer_eventOnHit_Parms), 0x0010000000000080, Z_Construct_UScriptStruct_FVector());
 			UProperty* NewProp_otherComp = new(EC_InternalUseOnlyConstructor, ReturnFunction, TEXT("otherComp"), RF_Public|RF_Transient|RF_MarkAsNative) UObjectProperty(CPP_PROPERTY_BASE(otherComp, JPlayer_eventOnHit_Parms), 0x0010000000080080, Z_Construct_UClass_UPrimitiveComponent_NoRegister());
@@ -393,7 +393,7 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_AJPlayer_LookUp(), "LookUp"); // 3907787890
 				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_AJPlayer_MoveForward(), "MoveForward"); // 2250432038
 				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_AJPlayer_MoveRight(), "MoveRight"); // 3909014366
-				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_AJPlayer_OnHit(), "OnHit"); // 2822424672
+				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_AJPlayer_OnHit(), "OnHit"); // 2689493592
 				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_AJPlayer_OnStartJump(), "OnStartJump"); // 661910411
 				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_AJPlayer_OnStopJump(), "OnStopJump"); // 1856149556
 				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_AJPlayer_Throw(), "Throw"); // 3988886722
@@ -428,7 +428,7 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 		check(OuterClass->GetClass());
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(AJPlayer, 2944345766);
+	IMPLEMENT_CLASS(AJPlayer, 2388552300);
 	static FCompiledInDefer Z_CompiledInDefer_UClass_AJPlayer(Z_Construct_UClass_AJPlayer, &AJPlayer::StaticClass, TEXT("/Script/JBall"), TEXT("AJPlayer"), false, nullptr, nullptr, nullptr);
 	DEFINE_VTABLE_PTR_HELPER_CTOR(AJPlayer);
 	void ATestMode::StaticRegisterNativesATestMode()
@@ -481,7 +481,7 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 			ReturnPackage = CastChecked<UPackage>(StaticFindObjectFast(UPackage::StaticClass(), nullptr, FName(TEXT("/Script/JBall")), false, false));
 			ReturnPackage->SetPackageFlags(PKG_CompiledIn | 0x00000000);
 			FGuid Guid;
-			Guid.A = 0x9D3F28F1;
+			Guid.A = 0xFA255359;
 			Guid.B = 0xBDFCE3E0;
 			Guid.C = 0x00000000;
 			Guid.D = 0x00000000;
