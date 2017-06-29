@@ -20,7 +20,6 @@
 /w44668
 /I "C:\Program Files\Epic Games\UE_4.16\Engine\Source"
 /I C:\Users\jaswen\JBall\Source
-/I C:\Users\jaswen\JBall\Intermediate\Build\Win64\UE4\Inc\JBall
 /I C:\Users\jaswen\JBall\Source\JBall
 /I "C:\Program Files\Epic Games\UE_4.16\Engine\Source\Runtime\Core\Public"
 /I "C:\Program Files\Epic Games\UE_4.16\Engine\Source\Runtime\Core\Public\Internationalization"
