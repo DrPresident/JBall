@@ -20,7 +20,7 @@ AJPlayer::AJPlayer()
 	MovementComponent = GetCharacterMovement();
 	MovementComponent->AirControl = 0.5;
 
-	WarpArm = CreateDefaultSubobject<USpringArmComponent>(TEXT("Warp Arm"));
+	//WarpArm = CreateDefaultSubobject<USpringArmComponent>(TEXT("Warp Arm"));
 
 	cameraPitch = 0.f;
 
@@ -37,51 +37,14 @@ AJPlayer::AJPlayer()
 		CharacterMesh->SetSkeletalMesh(Character.Object);
 }
 
-/*
-AJPlayer::AJPlayer(const FObjectInitializer &init)
-	//: Super(init.SetDefaultSubobjectClass<UJMovementComponent>(ACharacter::CharacterMovementComponentName))
-{
-	PrimaryActorTick.bCanEverTick = true;
-	jumped = false;
-	warped = false;
-	doubleJumped = false;
-	JumpMaxCount = 2;
-	WarpDistance = 1000;
-	WarpSpeed = 10;
-	warpTraceParams = FCollisionQueryParams(FName("Warp Trace"), true, this);
-	//warpTraceParams.bTraceComplex = true;
-	warpTraceParams.bTraceAsyncScene = true;
-	warpTraceParams.bReturnPhysicalMaterial = false;
-	w = WarpSpeed;
-	//MovementComponent = Cast<UJMovementComponent>(GetCharacterMovement());
-	MovementComponent = GetCharacterMovement();
-	MovementComponent->AirControl = 0.5;
-
-	cameraPitch = 0.f;
-
-	//Warp Marker Setup
-	WarpMarker = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Warp Marker"));
-	WarpMarker->bAutoActivate = true;
-	static ConstructorHelpers::FObjectFinder<UStaticMesh> Sphere(TEXT("/Game/StarterContent/Shapes/Shape_Sphere"));
-	if (Sphere.Succeeded()) 
-		WarpMarker->SetStaticMesh(Sphere.Object);
-
-	CharacterMesh = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Character"));
-	static ConstructorHelpers::FObjectFinder<USkeletalMesh> Character(TEXT("/Game/AnimeStarterPack/UE4_Mannequin/Mesh/SK_Mannequin"));
-	//static ConstructorHelpers::FObjectFinder<USkeleton> CharacterSkeleton(TEXT("/Game/AnimeStarterPack/UE4_Mannequin/Mesh/UE4_Mannequin_Skeleton"));
-	if (Character.Succeeded())
-		CharacterMesh->SetSkeletalMesh(Character.Object);
-}
-*/
-
 void AJPlayer::BeginPlay()
 {
 	Super::BeginPlay();
 	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("JBALL!!"));
 	//RootComponent = CharacterMesh;
 	CharacterMesh->SetupAttachment(RootComponent);
-	WarpArm->SetupAttachment(RootComponent);
-	WarpMarker->SetupAttachment(WarpArm);
+	//WarpArm->SetupAttachment(RootComponent);
+	WarpMarker->SetupAttachment(RootComponent);
 }
 
 void AJPlayer::Tick(float dTime)
@@ -127,8 +90,8 @@ void AJPlayer::Tick(float dTime)
 
 	//position Warp Marker
 	WarpMarker->SetRelativeLocation(WarpPoint);
-	CharacterMesh->SetRelativeLocation(FVector(10, 10, 0));
-	DrawDebugLine(GetWorld(),GetActorLocation(), WarpPoint, FColor::Red, false, -1, 0, 1.f);
+	CharacterMesh->SetRelativeLocation(GetActorLocation());
+	//DrawDebugLine(GetWorld(),GetActorLocation(), WarpPoint, FColor::Red, false, -1, 0, 1.f);
 }
 
 void AJPlayer::OnHit(class AActor* otherActor, class UPrimitiveComponent* otherComp, FVector normalImpulse, const FHitResult &hit) 

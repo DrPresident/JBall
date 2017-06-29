@@ -62,11 +62,11 @@ public:
 	UParticleSystemComponent *WarpMarker;
 	UPROPERTY(EditAnywhere)
 	USkeletalMeshComponent *CharacterMesh;
+	//USpringArmComponent *WarpArm;
 	
 protected:
 	virtual void BeginPlay() override;
 
-	USpringArmComponent *WarpArm;
 
 	bool warped,
 		 warping,
