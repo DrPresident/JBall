@@ -1,3 +1,0 @@
-C:\Users\jaswen\JBall\Source\JBall\JBall.Build.cs
-C:\Users\jaswen\JBall\Source\JBall.Target.cs
-C:\Users\jaswen\JBall\Source\JBallEditor.Target.cs
